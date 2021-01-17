@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h3 style='color:red'>
+        App WEB
+    </h3>
+
+
+    <h1>Vamos usar Jinja 2</h1>
+
+    <ul>
+        LISTA de Posts (BANCO DE DADOS)
+        {% for post in posts %}
+        <li>{{post}}</li>
+        {% endfor %}
+    </ul>
+
+
+    {%if nome == 'Miguel'%}
+    Nome: <b>{{nome}}</b>
+    {%else%}
+    Nome: {{nome}}
+    {%endif%}
+
+    <ul>
+        LISTA
+        {% for n in lista %}
+        <li>{{n}} --> {{nome}}</li>
+        {% endfor %}
+    </ul>
+
+
+
+
+</body>
+
+</html>
