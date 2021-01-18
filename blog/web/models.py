@@ -1,9 +1,27 @@
 from django.db import models
 
+
+#                Escolher os textos
+class Categorias(models.TextChoices):
+    DR = 'DR','Doutorado'
+    MS = 'MS','Mestrado'
+    GD = 'GD','Graduado'
+    IC = 'IC','Iniciação Cientifica' 
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
     sub_title = models.CharField(max_length =200)
     content = models.TextField()
+
+    categories = models.CharField(
+        max_length=2,
+        choices = Categorias.choices,
+        default = Categorias.IC
+    )
+
+    aprovados_teste = models.BooleanField(default = True)
+
+
 
     # Vai mostrar no Admin por título agora
     def __str__(self):
