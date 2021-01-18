@@ -23,8 +23,10 @@
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="{%static 'images/avatar.jpg'%}" alt="" /></a>
-					<h1><strong>I am Strata</strong>, a super simple<br />
-					responsive site template freebie<br />
+					<h1><strong>Django Developer</strong>, a super simple
+					<br>
+					responsive site template freebie
+					<br>
 					crafted by <a href="http://html5up.net">HTML5 UP</a>.</h1>
 				</div>
 			</header>
@@ -46,38 +48,28 @@
 
 				<!-- Two -->
 					<section id="two">
-						<h2>Recent Work</h2>
+						<h2>Posts</h2>
 						<div class="row">
+
+							<!--DJANGO POSTS -->
+							{%for post in posts%}
 							<article class="col-6 col-12-xsmall work-item">
+								<h2>{{post.title}}</h2>
+
+								{%if post.imagem%}
+								<a href="{{post.imagem.url}}" class="image fit thumb"><img src ="{{post.imagem.url}}" alt="" /></a>
+								{%else%}
 								<a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"><img src="{% static 'images/thumbs/01.jpg'%}" alt="" /></a>
-								<h3>Magna sed consequat tempus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
+								{%endif%}
+
+								<h3>{{post.sub_title}}</h3>
+								<p>{{post.content}}</p>
+								<ul class="actions">
+									<li><a href="{% url 'post_detail' post.id%}" class="button">Read More</a></li>
+								</ul>
 							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="{% static 'images/thumbs/02.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/02.jpg'%}" alt="" /></a>
-								<h3>Ultricies lacinia interdum</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="{% static 'images/thumbs/03.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/03.jpg'%}" alt="" /></a>
-								<h3>Tortor metus commodo</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="{% static 'images/thumbs/04.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/04.jpg'%}" alt="" /></a>
-								<h3>Quam neque phasellus</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="{% static 'images/thumbs/05.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/05.jpg'%}" alt="" /></a>
-								<h3>Nunc enim commodo aliquet</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
-							<article class="col-6 col-12-xsmall work-item">
-								<a href="{% static 'images/thumbs/06.jpg'%}" class="image fit thumb"><img src="{% static 'images/thumbs/06.jpg'%}" alt="" /></a>
-								<h3>Risus ornare lacinia</h3>
-								<p>Lorem ipsum dolor sit amet nisl sed nullam feugiat.</p>
-							</article>
+							{%endfor%}
+
 						</div>
 						<ul class="actions">
 							<li><a href="#" class="button">Full Portfolio</a></li>

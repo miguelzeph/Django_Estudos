@@ -21,7 +21,7 @@ class PostAdmin(admin.ModelAdmin):
         # filtro do que vai mostrar, exemplo, 2 filtros eu coloquei
         return Post.objects.filter(
             aprovados_teste=True,
-            categories = 'MS'
+            #categories = 'MS' or 'DR'
             )
     
 admin.site.register(Post, PostAdmin)

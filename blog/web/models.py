@@ -21,6 +21,12 @@ class Post(models.Model):
 
     aprovados_teste = models.BooleanField(default = True)
 
+    imagem = models.ImageField(
+        upload_to = 'post',
+        null = True,
+        blank = True
+    )
+
 
 
     # Vai mostrar no Admin por título agora

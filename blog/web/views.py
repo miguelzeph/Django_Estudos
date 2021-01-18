@@ -6,9 +6,15 @@ def hello_blog(request):
 
     data = {
         'nome': 'Miguel',
-        'lista': [0,1,2,3,4],
-        'posts': Post.objects.all()
+        'lista': [0,1,2,3,4],#        Pode colocar Filtro do que vai aparecer...
+        'posts': Post.objects.all() # Post.objects.filter(aprovados_teste=True)
     }
 
     return render(request, 'index.html',data)
+
+
+def post_detail(request,id):
+    post = Post.objects.get(id=id)
+    return render(request, 'post_detail.html',{'post':post})
+
 
