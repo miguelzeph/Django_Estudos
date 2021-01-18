@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
-from .models import Post
+from .models import Post, Contact
 def hello_blog(request):
 
     data = {
@@ -16,5 +16,23 @@ def hello_blog(request):
 def post_detail(request,id):
     post = Post.objects.get(id=id)
     return render(request, 'post_detail.html',{'post':post})
+
+def save_form(request):
+
+    #Cria OBjeto no DB
+    Contact.objects.create(
+        name = request.POST['name'],
+        email = request.POST['email'],
+        message = request.POST['message']
+    )
+
+    # Cria dicionário
+    dados = {
+        'name':request.POST['name'],
+        'email':request.POST['email'],
+        'message':request.POST['message']
+        }
+
+    return render(request,'form_ok.html',dados)
 
 

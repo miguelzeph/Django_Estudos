@@ -2,6 +2,15 @@ from django.db import models
 
 
 #                Escolher os textos
+class Contact(models.Model):
+    name = models.CharField(max_length=150)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
+
 class Categorias(models.TextChoices):
     DR = 'DR','Doutorado'
     MS = 'MS','Mestrado'

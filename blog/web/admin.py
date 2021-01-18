@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here. # REGISTRAR OS MODELS AQUI
-from .models import Post
+from .models import Post, Contact
 
 class PostAdmin(admin.ModelAdmin):
     
@@ -9,10 +9,6 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ['title','sub_title','full_name','categories','aprovados_teste']
     search_fields = ['title']
     #fields = ('content','sub_title') # posso organiar a ordem do que mostrar
-
-
-    def __str__(self):
-        return self.title
 
     
     def get_queryset(self, request):
@@ -25,4 +21,12 @@ class PostAdmin(admin.ModelAdmin):
             )
     
 admin.site.register(Post, PostAdmin)
+
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ['name','email']
+    
+    
+
+
+admin.site.register(Contact, ContactAdmin)
 
