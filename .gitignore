@@ -5,5 +5,5 @@ env/
 **/__pycache__/
 
 # Data Base
-/blog/db.sqlite3
+#/blog/db.sqlite3
 
