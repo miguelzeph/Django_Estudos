@@ -2,70 +2,76 @@
 {%load static%}
 {%block content%}
 
-
 <!-- One -->
-	
-	<section id="one">
-		<header class="major">
-			<h2>{{post.title}}</h2>
-		</header>
-			<h4>{{post.sub_title}}</h4>
-		{%if post.imagem%}
-		<img style = 'height:200px;width:150px'src = "{{post.imagem.url}}">
-		{%else%}
-		<img src="{% static 'images/thumbs/01.jpg'%}" alt="" />
-		{%endif%}	
+<section id="one">
+	<header class="major">
+		<h2>{{post.title}}</h2>
+	</header>
+	<h4>{{post.sub_title}}</h4>
+	{%if post.imagem%}
+	<img style="height:160px;width:300px" src="{{post.imagem.url}}" alt="" />
+	{%else%}
+	<img style="height:160px;width:300px" src="{% static 'images/thumbs/01.jpg'%}" alt="" />
+	{%endif%}
 
-		<p>{{post.content}}</p>
-		<ul class="actions">
-			<li><a href="{% url 'home' %}" class="button">Return</a></li>
-		</ul>
-	</section>
+	<p>{{post.content}}</p>
+	<ul class="actions">
+		<li><a href="{% url 'home' %}" class="button">Return</a></li>
+	</ul>
+</section>
 
+<h3>Comentários</h3>
+{% if contacts %}
+	{%for contact in contacts%}
+	<p style='font-size:13px;'>User: {{contact.name}} - email: {{contact.email}}
+		<br>
+		{{contact.message}}
+	</p>
+	{%endfor%}   
+{% else %}
+	Seja o Primeiro a Comentar
+{% endif %}
 
 
 <!-- Three -->
-	<section id="three">
-		<h2>Faça seu Post</h2>
-		<div class="row">
-			<div class="col-8 col-12-small">
+<section id="three">
+	<h2>Faça seu Post</h2>
+	<div class="row">
+		<div class="col-8 col-12-small">
 
-				<!-- Form do Django-->
-				<form method="post" action="{%url 'save-form'%}">
-					{%csrf_token%}
-					<div class="row gtr-uniform gtr-50">
-						<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" /></div>
-						<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea></div>
+			<!-- Form do Django-->
+			<form method="post" action="{%url 'save-form' post.id%}">
+				{%csrf_token%}
+				<div class="row gtr-uniform gtr-50">
+					<div class="col-6 col-12-xsmall"><input type="text" name="name" id="name" placeholder="Name" />
 					</div>
-					<input type="submit" value="Send Message" />
-				</form>
-				
-					
-				
-			</div>
-			<div class="col-4 col-12-small">
-				<ul class="labeled-icons">
-					<li>
-						<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
-						Stock-on-Trent, England<br />
-						United Kingdom
-					</li>
-					<li>
-						<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-						000-000-0000
-					</li>
-					<li>
-						<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-						<a href="#">teste@untitled.tld</a>
-					</li>
-				</ul>
-			</div>
+					<div class="col-6 col-12-xsmall"><input type="email" name="email" id="email" placeholder="Email" />
+					</div>
+					<div class="col-12"><textarea name="message" id="message" placeholder="Message" rows="4"></textarea>
+					</div>
+				</div>
+				<input type="submit" value="Send Message" />
+			</form>
+
 		</div>
-	</section>
-
-
-				
-
+		<div class="col-4 col-12-small">
+			<ul class="labeled-icons">
+				<li>
+					<h3 class="icon solid fa-home"><span class="label">Address</span></h3>
+					Stock-on-Trent, England<br />
+					United Kingdom
+				</li>
+				<li>
+					<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
+					000-000-0000
+				</li>
+				<li>
+					<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
+					<a href="#">teste@untitled.tld</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</section>
 
 {%endblock%}

@@ -7,6 +7,9 @@ class Contact(models.Model):
     email = models.EmailField()
     message = models.TextField()
 
+    # 2 - jogos, 3 - programacao, 4 - academia - 5 fut
+    id_post = models.IntegerField(default = 2)
+
     def __str__(self):
         return self.name
 

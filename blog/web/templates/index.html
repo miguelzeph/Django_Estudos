@@ -1,43 +1,36 @@
-
 {%extends "base.html"%}
 {%load static%}
 
 {%block content%}
 
+<!-- Two -->
+<section id="two">
+	<h2>Assuntos - Posts</h2>
+	<div class="row">
 
-	
+		<!--DJANGO POSTS -->
+		{%for post in posts%}
+		<article class="col-6 col-12-xsmall work-item">
+			<h2>{{post.title}}</h2>
 
-	<!-- Two -->
-		<section id="two">
-			<h2>Assuntos - Posts</h2>
-			<div class="row">
+			{%if post.imagem%}
+			<a href="{{post.imagem.url}}" class="image fit thumb"><img style="height:160px;width:300px"
+					src="{{post.imagem.url}}" alt="" /></a>
+			{%else%}
+			<a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"><img style="height:160px;width:300px"
+					src="{% static 'images/thumbs/01.jpg'%}" alt="" /></a>
+			{%endif%}
 
-				<!--DJANGO POSTS -->
-				{%for post in posts%}
-				<article class="col-6 col-12-xsmall work-item">
-					<h2>{{post.title}}</h2>
+			<h3>{{post.sub_title}}</h3>
+			<p>{{post.content}}</p>
+			<ul class="actions">
+				<li><a href="{% url 'post_detail' post.id%}" class="button">Read More</a></li>
+			</ul>
+		</article>
+		{%endfor%}
 
-					{%if post.imagem%}
-					<a href="{{post.imagem.url}}" class="image fit thumb"><img style ="height:160px;heigth:300px"src ="{{post.imagem.url}}" alt="" /></a>
-					{%else%}
-					<a href="{% static 'images/fulls/01.jpg' %}" class="image fit thumb"><img style ="height:160px;heigth:300px" src="{% static 'images/thumbs/01.jpg'%}" alt="" /></a>
-					{%endif%}
+	</div>
 
-					<h3>{{post.sub_title}}</h3>
-					<p>{{post.content}}</p>
-					<ul class="actions">
-						<li><a href="{% url 'post_detail' post.id%}" class="button">Read More</a></li>
-					</ul>
-				</article>
-				{%endfor%}
-
-			</div>
-
-		</section>
-
-
-
-
+</section>
 
 {%endblock%}
-

@@ -14,16 +14,21 @@ def hello_blog(request):
 
 
 def post_detail(request,id):
+    print(Contact.objects.all())
     post = Post.objects.get(id=id)
-    return render(request, 'post_detail.html',{'post':post})
 
-def save_form(request):
+    # 2 - jogos, 3 - programacao, 4 - academia - 5 fut
+    contacts = Contact.objects.filter(id_post = id)
+    return render(request, 'post_detail.html',{'post':post,'contacts':contacts})
+
+def save_form(request, id):
 
     #Cria OBjeto no DB
     Contact.objects.create(
         name = request.POST['name'],
         email = request.POST['email'],
-        message = request.POST['message']
+        message = request.POST['message'],
+        id_post = id,
     )
 
     # Cria dicionário
