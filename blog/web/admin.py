@@ -10,7 +10,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title']
     #fields = ('content','sub_title') # posso organiar a ordem do que mostrar
 
-    
+    """
     def get_queryset(self, request):
         #return Post.Objects.all() # PADRÃO vem esse
         
@@ -19,6 +19,7 @@ class PostAdmin(admin.ModelAdmin):
             aprovados_teste=True,
             #categories = 'MS' or 'DR'
             )
+    """
     
 admin.site.register(Post, PostAdmin)
 
